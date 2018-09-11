@@ -1,4 +1,4 @@
-package JAMAJni;
+package JAMAJniLite;
 
 import java.text.NumberFormat;
 import java.text.DecimalFormat;
@@ -8,7 +8,7 @@ import java.text.FieldPosition;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.StreamTokenizer;
-import JAMAJni.util.*;
+import JAMAJniLite.util.*;
 
 
 /**BLAS.java*/
@@ -16,14 +16,11 @@ import JAMAJni.util.*;
 public class Matrix implements Cloneable, java.io.Serializable {
  private Matrix() {}
     static {
-     
     /* load library (which will contain blas functions.)*/
     System.loadLibrary("blas_lite");
- 
  }
     
     /**inform java virtual machine that function is defined externally*/
-    
     
     /* -----------------------
      * Class variables
@@ -625,13 +622,26 @@ public class Matrix implements Cloneable, java.io.Serializable {
     
     /*Declaration
      X = A * B
+    
      */
     
     public Matrix times (Matrix B) {
+        checkMatrixDimensions(B);
         double[] a = this.getColumnPackedCopy();
         double[] b = B.getColumnPackedCopy();
         double[] c = new double[m * B.getColumnDimension()];
         dgemm(Matrix.LAYOUT.ColMajor, Matrix.TRANSPOSE.NoTrans, Matrix.TRANSPOSE.NoTrans,
+              m, B.getColumnDimension(), n, 1, a, b, 0, c);
+        Matrix X = new Matrix(c, m);
+        return X;
+    }
+
+    public Matrix times (Matrix B, int TransA, int TransB) {
+        checkMatrixDimensions(B);
+        double[] a = this.getColumnPackedCopy();
+        double[] b = B.getColumnPackedCopy();
+        double[] c = new double[m * B.getColumnDimension()];
+        dgemm(Matrix.LAYOUT.ColMajor, TransA, TransB,
               m, B.getColumnDimension(), n, 1, a, b, 0, c);
         Matrix X = new Matrix(c, m);
         return X;
@@ -657,6 +667,7 @@ public class Matrix implements Cloneable, java.io.Serializable {
     
     /* Using dtrmm, C=alpha*op(A)*B or  C=alpha*B*op(A)        */
     public  Matrix tritimes (Matrix B, double alpha){
+        checkMatrixDimensions(B);
         double[] a = this.getColumnPackedCopy();
         double[] b = B.getColumnPackedCopy();
         /* need to check if A is square matrix*/

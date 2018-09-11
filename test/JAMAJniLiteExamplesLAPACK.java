@@ -1,4 +1,4 @@
-import JAMAJni.*;
+import JAMAJniLite.*;
 import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.text.DecimalFormat;

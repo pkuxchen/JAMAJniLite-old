@@ -22,7 +22,7 @@ extern int dorgqr_(int *m, int *n, int *k, double *a, int *lda, double *tau,
 extern int dormqr_(char *side, char *trans, int *m, int *n, int *k, double *a, int *lda, double *tau, double *c, int *ldc, double *work, int *lwork, int *info);
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_QRDecomposition_dgeqrf
+JNIEXPORT jint JNICALL Java_JAMAJniLite_QRDecomposition_dgeqrf
   (JNIEnv *env, jclass obj, jint layout, jint m, jint n, jdoubleArray ja,
    jint lda, jdoubleArray jtau, jdoubleArray jwork, jint lwork,
    jintArray jinfo)
@@ -61,7 +61,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_QRDecomposition_dgeqrf
 }
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_QRDecomposition_dorgqr
+JNIEXPORT jint JNICALL Java_JAMAJniLite_QRDecomposition_dorgqr
   (JNIEnv *env, jclass obj, jint layout, jint m, jint n, jint k,
    jdoubleArray ja, jint lda, jdoubleArray jtau, jdoubleArray jwork,
    jint lwork, jintArray jinfo)
@@ -100,7 +100,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_QRDecomposition_dorgqr
 }
 
 
-JNIEXPORT jint Java_JAMAJni_QRDecomposition_dormqr
+JNIEXPORT jint Java_JAMAJniLite_QRDecomposition_dormqr
 (JNIEnv *env, jclass klass, jint layout, jchar jside, jchar jtrans,
  jint m, jint n, jint k, jdoubleArray a, jint lda, jdoubleArray tau,
  jdoubleArray c, jint ldc, jdoubleArray jwork, jint lwork, jintArray jinfo){

@@ -21,7 +21,7 @@ extern int dpotrs_(char *uplo, int *n, int *nrhs, double *a, int *lda,
                    double *b, int *ldb, int *info);
 
 
-JNIEXPORT void JNICALL Java_JAMAJni_CholeskyDecomposition_dpotrf
+JNIEXPORT void JNICALL Java_JAMAJniLite_CholeskyDecomposition_dpotrf
   (JNIEnv *env, jclass obj, jint layout, jchar juplo, jint n, jdoubleArray ja,
    jint lda, jintArray jinfo)
 {
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_JAMAJni_CholeskyDecomposition_dpotrf
 }
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_CholeskyDecomposition_dpotri
+JNIEXPORT jint JNICALL Java_JAMAJniLite_CholeskyDecomposition_dpotri
   (JNIEnv *env, jclass obj, jint layout, jchar juplo, jint n, jdoubleArray ja,
    jint lda, jintArray jinfo)
 {
@@ -84,7 +84,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_CholeskyDecomposition_dpotri
 }
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_CholeskyDecomposition_dpotrs
+JNIEXPORT jint JNICALL Java_JAMAJniLite_CholeskyDecomposition_dpotrs
   (JNIEnv *env, jclass obj, jint layout, jchar juplo, jint n, jint nrhs,
    jdoubleArray ja, jint lda, jdoubleArray jb, jint ldb, jintArray jinfo)
 {

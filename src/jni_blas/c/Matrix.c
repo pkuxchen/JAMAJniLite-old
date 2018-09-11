@@ -1,15 +1,6 @@
-//
-//  main.c
-//  BLAS
-//
-//  Created by Lu Zhang on 5/8/16.
-//  Copyright © 2016 Lu Zhang. All rights reserved.
-//
-
-
 #include <jni.h>
 #include <assert.h>
-/*#include <Matrix.h>*/
+
 
 /* Calling fortran blas from libblas */
 
@@ -65,7 +56,7 @@ extern void dtrsm_(char *side, char *uplo, char *transa, char *diag, int *m,
 
 /* Level 1: dscal, daxpy, ddot */
 
-JNIEXPORT void Java_JAMAJni_Matrix_dscal
+JNIEXPORT void Java_JAMAJniLite_Matrix_dscal
 (JNIEnv *env, jclass klass, jint n, jdouble alpha, jdoubleArray x, jint incx){
     
     /* dscal:  x = alpha * x */
@@ -80,7 +71,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dscal
 }
 
 
-JNIEXPORT void Java_JAMAJni_Matrix_daxpy
+JNIEXPORT void Java_JAMAJniLite_Matrix_daxpy
 (JNIEnv *env, jclass klass, jint n, jdouble alpha, jdoubleArray x,
  jint incx, jdoubleArray y, jint incy){
     
@@ -97,7 +88,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_daxpy
     (*env)-> ReleaseDoubleArrayElements (env, x, xElems, JNI_ABORT);
 }
 
-JNIEXPORT jdouble Java_JAMAJni_Matrix_ddot
+JNIEXPORT jdouble Java_JAMAJniLite_Matrix_ddot
 (JNIEnv *env, jclass klass, jint n, jdoubleArray x, jint incx,
  jdoubleArray y, jint incy){
     
@@ -120,7 +111,7 @@ JNIEXPORT jdouble Java_JAMAJni_Matrix_ddot
 
 /* Level 2: dgemv, dtrmv, dsymv */
 
-JNIEXPORT void Java_JAMAJni_Matrix_dgemv
+JNIEXPORT void Java_JAMAJniLite_Matrix_dgemv
 (JNIEnv *env, jclass klass, jint Layout, jint Trans, jint m, jint n,
  jdouble alpha, jdoubleArray A, jdoubleArray x, jint incx, jdouble beta,
  jdoubleArray y, jint incy){
@@ -170,7 +161,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dgemv
     (*env)-> ReleaseDoubleArrayElements (env, A, AElems, JNI_ABORT);
 }
 
-JNIEXPORT void Java_JAMAJni_Matrix_dtrmv
+JNIEXPORT void Java_JAMAJniLite_Matrix_dtrmv
 (JNIEnv *env, jclass klass, jint Layout, jint Uplo, jint Trans, jint Diag,
  jint n, jdoubleArray A, jdoubleArray x, jint incx){
     
@@ -226,7 +217,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dtrmv
     (*env)-> ReleaseDoubleArrayElements (env, A, AElems, JNI_ABORT);
 }
 
-JNIEXPORT void Java_JAMAJni_Matrix_dsymv
+JNIEXPORT void Java_JAMAJniLite_Matrix_dsymv
 (JNIEnv *env, jclass klass, jint Layout, jint Uplo, jint n, jdouble alpha,
  jdoubleArray A, jdoubleArray x, jint incx, jdouble beta,
  jdoubleArray y, int incy){
@@ -272,7 +263,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dsymv
 
 /* Level 3: dgemm, dtrmm, dsymm */
 
-JNIEXPORT void Java_JAMAJni_Matrix_dgemm
+JNIEXPORT void Java_JAMAJniLite_Matrix_dgemm
 (JNIEnv *env, jclass klass, jint Layout, jint TransA, jint TransB, jint m,
  jint n, jint k, jdouble alpha, jdoubleArray  A, jdoubleArray B,
  jdouble beta, jdoubleArray C){
@@ -340,7 +331,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dgemm
 }
 
 
-JNIEXPORT void Java_JAMAJni_Matrix_dtrmm
+JNIEXPORT void Java_JAMAJniLite_Matrix_dtrmm
 (JNIEnv *env, jclass klass, jint Layout, jint Side, jint Uplo, jint TransA,
  jint Diag, jint m, jint n, jdouble alpha, jdoubleArray  A, jdoubleArray B){
     
@@ -409,7 +400,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dtrmm
     
 }
 
-JNIEXPORT void Java_JAMAJni_Matrix_dsymm
+JNIEXPORT void Java_JAMAJniLite_Matrix_dsymm
 (JNIEnv *env, jclass klass, jint Layout, jint Side, jint Uplo,
  jint m, jint n, jdouble alpha, jdoubleArray  A, jdoubleArray B,
  jdouble beta, jdoubleArray C){
@@ -472,7 +463,7 @@ JNIEXPORT void Java_JAMAJni_Matrix_dsymm
 }
 
 
-JNIEXPORT void Java_JAMAJni_Matrix_dtrsm
+JNIEXPORT void Java_JAMAJniLite_Matrix_dtrsm
 (JNIEnv *env, jclass klass, jint Layout, jint Side, jint Uplo, jint TransA,
  jint Diag, jint m, jint n, jdouble alpha, jdoubleArray  A, jdoubleArray B){
     

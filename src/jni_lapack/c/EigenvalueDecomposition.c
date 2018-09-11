@@ -41,7 +41,7 @@ extern void dtrsm_(char *side, char *uplo, char *transa, char *diag, int *m,
                    int *ldb);
 
 //from blas
-JNIEXPORT void Java_JAMAJni_EigenvalueDecomposition_dtrmv
+JNIEXPORT void Java_JAMAJniLite_EigenvalueDecomposition_dtrmv
 (JNIEnv *env, jclass klass, jint Layout, jint Uplo, jint Trans, jint Diag,
  jint n, jdoubleArray A, jdoubleArray x, jint incx){
     
@@ -97,7 +97,7 @@ JNIEXPORT void Java_JAMAJni_EigenvalueDecomposition_dtrmv
     (*env)-> ReleaseDoubleArrayElements (env, A, AElems, JNI_ABORT);
 }
 
-JNIEXPORT jint JNICALL Java_JAMAJni_EigenvalueDecomposition_dgeev
+JNIEXPORT jint JNICALL Java_JAMAJniLite_EigenvalueDecomposition_dgeev
   (JNIEnv *env, jclass obj, jint layout, jchar jjobvl, jchar jjobvr, jint n,
    jdoubleArray ja, jint lda, jdoubleArray jwr, jdoubleArray jwi,
    jdoubleArray jvl, jint ldvl, jdoubleArray jvr, jint ldvr,
@@ -163,7 +163,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_EigenvalueDecomposition_dgeev
     return result;
 }
 
-JNIEXPORT void JNICALL Java_JAMAJni_EigenvalueDecomposition_dsyev
+JNIEXPORT void JNICALL Java_JAMAJniLite_EigenvalueDecomposition_dsyev
   (JNIEnv *env, jclass obj, jint layout, jchar jjobz, jchar juplo, jint n,
    jdoubleArray ja, jint lda, jdoubleArray jw, jdoubleArray jwork,
    jint lwork, jintArray jinfo)
@@ -204,7 +204,7 @@ JNIEXPORT void JNICALL Java_JAMAJni_EigenvalueDecomposition_dsyev
 }
 
 //from blas
-JNIEXPORT void Java_JAMAJni_EigenvalueDecomposition_dtrsm
+JNIEXPORT void Java_JAMAJniLite_EigenvalueDecomposition_dtrsm
 (JNIEnv *env, jclass klass, jint Layout, jint Side, jint Uplo, jint TransA,
  jint Diag, jint m, jint n, jdouble alpha, jdoubleArray  A, jdoubleArray B){
     

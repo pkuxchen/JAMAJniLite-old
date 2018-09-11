@@ -1,4 +1,4 @@
-package JAMAJni;
+package JAMAJniLite;
 
 import java.lang.*;
 
