@@ -27,7 +27,7 @@ extern int dgesdd_(char *jobz, int *m, int *n, double *a, int *lda, double *s,
 
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_SingularValueDecomposition_dgeev
+JNIEXPORT jint JNICALL Java_JAMAJniLite_SingularValueDecomposition_dgeev
   (JNIEnv *env, jclass obj, jint layout, jchar jjobvl, jchar jjobvr, jint n,
    jdoubleArray ja, jint lda, jdoubleArray jwr, jdoubleArray jwi,
    jdoubleArray jvl, jint ldvl, jdoubleArray jvr, jint ldvr,
@@ -94,7 +94,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_SingularValueDecomposition_dgeev
 }
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_SingularValueDecomposition_dgesvd
+JNIEXPORT jint JNICALL Java_JAMAJniLite_SingularValueDecomposition_dgesvd
   (JNIEnv *env, jclass obj, jint layout, jchar jjobu, jchar jjobvt, jint m,
    jint n, jdoubleArray ja, jint lda, jdoubleArray js, jdoubleArray ju,
    jint ldu, jdoubleArray jvt, jint ldvt, jdoubleArray jwork, jint lwork,
@@ -183,7 +183,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_SingularValueDecomposition_dgesvd
   }
 
 
-JNIEXPORT jint JNICALL Java_JAMAJni_SingularValueDecomposition_dgesdd
+JNIEXPORT jint JNICALL Java_JAMAJniLite_SingularValueDecomposition_dgesdd
   (JNIEnv *env, jclass obj, jint layout, jchar jjobz, jint m, jint n,
    jdoubleArray ja, jint lda, jdoubleArray js, jdoubleArray ju, jint ldu,
    jdoubleArray jvt, jint ldvt, jdoubleArray jwork, jint lwork,

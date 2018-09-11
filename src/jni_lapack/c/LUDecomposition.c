@@ -19,7 +19,7 @@ extern void dgetrs_(char *trans, int *n, int *nrhs, double *a, int *lda,
                     int *ipiv, double *b, int *ldb, int *info);
 
 /* LU */
-JNIEXPORT jint JNICALL Java_JAMAJni_LUDecomposition_dgetrf
+JNIEXPORT jint JNICALL Java_JAMAJniLite_LUDecomposition_dgetrf
   (JNIEnv *env, jclass obj, jint layout, jint m, jint n, jdoubleArray ja,
    jint lda, jintArray jipiv, jintArray jinfo)
 {
@@ -50,7 +50,7 @@ JNIEXPORT jint JNICALL Java_JAMAJni_LUDecomposition_dgetrf
 }
 
 
-JNIEXPORT void JNICALL Java_JAMAJni_LUDecomposition_dgetrs
+JNIEXPORT void JNICALL Java_JAMAJniLite_LUDecomposition_dgetrs
   (JNIEnv *env, jclass obj, jint layout, jchar jtrans, jint n, jint nrhs,
    jdoubleArray ja, jint lda, jintArray jipiv, jdoubleArray jb, jint ldb,
    jintArray jinfo)

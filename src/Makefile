@@ -26,7 +26,7 @@ DYLIB_LAPACK5 = $(JAVA_HOME)/lib/liblapack_SingularValueDecomposition.so
 DYLIB_BLAS = $(JAVA_HOME)/lib/libblas_lite.so
 	
 
-# For package JAMAJni
+# For package JAMAJniLite
 JC = javac
 JFLAGS = -d
 JAVA_SRC = $(JNI_UTIL)/Maths.java $(JNI_LAPACK_SRC)/java/LUDecomposition.java $(JNI_LAPACK_SRC)/java/CholeskyDecomposition.java $(JNI_LAPACK_SRC)/java/QRDecomposition.java $(JNI_LAPACK_SRC)/java/EigenvalueDecomposition.java $(JNI_LAPACK_SRC)/java/SingularValueDecomposition.java $(JNI_BLAS_SRC)/java/Matrix.java 

@@ -1,4 +1,4 @@
-import JAMAJni.*;
+import JAMAJniLite.*;
 import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.text.DecimalFormat;
@@ -12,7 +12,7 @@ public final class JAMAJniLiteExamples {
         //
         // Prepare the matrices and other parameters
         //
-        System.out.println("###   Exaples for JAMAJni   ### \n \n");
+        System.out.println("###   Exaples for JAMAJniLite   ### \n \n");
         System.out.println("###   Parameter Preparation   ###");
         
         int M=3, N=3;
@@ -68,6 +68,12 @@ public final class JAMAJniLiteExamples {
         //
         System.out.println("\n##  Multiplication: C = A * B  ##");
         C = A.times(B);
+        printMatrix("C = ", matrix_layout, C.getArray(), M, N);
+        //
+        //TIMES with transpose option
+        //
+        System.out.println("\n##  Multiplication : C = A' * B  ##");
+        C = A.times(B,Matrix.TRANSPOSE.Trans,Matrix.TRANSPOSE.NoTrans);
         printMatrix("C = ", matrix_layout, C.getArray(), M, N);
         //
         //SCALAR
