@@ -99,13 +99,13 @@ public final class JAMAJniLiteExamples {
         printMatrix("Matrix BB", matrix_layout, BB.getArray(), M, 2);
         System.out.println("\n##  Multiplication with transpose option: C = AA * BB  ##");
         C = AA.times(BB,notrans,notrans);
-        printMatrix("C = ", matrix_layout, C.getArray(), C.getRowDimention(), C.getColumnDimention());
+        printMatrix("C = ", matrix_layout, C.getArray(), C.getRowDimension(), C.getColumnDimension());
         //
         //TIMES with transpose option
         //
         System.out.println("\n##  Multiplication : C = AA' * BB'  ##");
         C = AA.times(BB,trans,trans);
-        printMatrix("C = ", matrix_layout, C.getArray(), C.getRowDimention(), C.getColumnDimention());
+        printMatrix("C = ", matrix_layout, C.getArray(), C.getRowDimension(), C.getColumnDimension());
         //
         //SCALAR
         //
