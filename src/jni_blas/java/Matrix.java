@@ -622,11 +622,12 @@ public class Matrix implements Cloneable, java.io.Serializable {
     
     /*Declaration
      X = A * B
-    
      */
     
     public Matrix times (Matrix B) {
-        checkMatrixDimensions(B);
+        if (B.m != n) {
+            throw new IllegalArgumentException("Matrix dimensions must agree.");
+        }
         double[] a = this.getColumnPackedCopy();
         double[] b = B.getColumnPackedCopy();
         double[] c = new double[m * B.getColumnDimension()];
@@ -637,16 +638,38 @@ public class Matrix implements Cloneable, java.io.Serializable {
     }
 
     public Matrix times (Matrix B, int TransA, int TransB) {
-        checkMatrixDimensions(B);
+        int nrow, ncol, bnrow, bncol;
+        
+        if (TransA == Matrix.TRANSPOSE.NoTrans){
+            nrow = m;
+            ncol = n;
+        }
+        else{
+            nrow = n;
+            ncol = m;
+        }
+        
+        if (TransB == Matrix.TRANSPOSE.NoTrans){
+            bnrow = B.m;
+            bncol = B.n;
+        }
+        else{
+            bnrow = B.n;
+            bncol = B.m;
+        }
+
+        if (ncol != bnrow) {
+            throw new IllegalArgumentException("Matrix dimensions must agree.");
+        }
+
         double[] a = this.getColumnPackedCopy();
         double[] b = B.getColumnPackedCopy();
-        double[] c = new double[m * B.getColumnDimension()];
+        double[] c = new double[nrow * bncol];
         dgemm(Matrix.LAYOUT.ColMajor, TransA, TransB,
-              m, B.getColumnDimension(), n, 1, a, b, 0, c);
-        Matrix X = new Matrix(c, m);
+              nrow, bncol, ncol, 1, a, b, 0, c);
+        Matrix X = new Matrix(c, nrow);
         return X;
     }
-    
     
     
     /* Tentatively made by Diyang */
