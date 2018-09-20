@@ -30,7 +30,7 @@ DYLIB_BLAS = $(JAVA_HOME)/lib/libblas_lite.so
 JC = javac
 JFLAGS = -d
 JAVA_SRC = $(JNI_UTIL)/Maths.java $(JNI_LAPACK_SRC)/java/LUDecomposition.java $(JNI_LAPACK_SRC)/java/CholeskyDecomposition.java $(JNI_LAPACK_SRC)/java/QRDecomposition.java $(JNI_LAPACK_SRC)/java/EigenvalueDecomposition.java $(JNI_LAPACK_SRC)/java/SingularValueDecomposition.java $(JNI_BLAS_SRC)/java/Matrix.java 
-PACKAGE = $(JAVA_HOME)/class/*
+PACKAGE = $(JAVA_HOME)/class/JAMAJniLite
 
 
 #If you would like to link to openblas library, you can justly simply replace all the -llapack and -lblas below by the -lopenblas.
@@ -66,8 +66,3 @@ $(DYLIB_BLAS): $(C_SRC_BLAS)
 clean: 
 	rm -fr $(JAVA_HOME)/class
 	rm -fr $(JAVA_HOME)/lib
-	rm -f $(JAVA_HOME)/lib/*.so
-	rm -f $(JAVA_HOME)/test/*.class
-	rm -f $(JAVA_HOME)/test/*.txt
-	rm -f $(JAVA_HOME)/test/*.out
-	rm -f $(JAVA_HOME)/test/*.serial
